@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.17.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300, "stroke": "white"}}, "data": {"name": "data-5c0e9eebbc3d679b8afad31afecc248b"}, "mark": {"type": "area", "opacity": 0.7}, "encoding": {"color": {"field": "BMI_clean", "scale": {"scheme": "magma"}, "sort": ["Underweight", "Normal", "Overweight", "Obese", "Missing"], "title": "BMI Categories", "type": "nominal"}, "order": {"field": "custom_order", "sort": "ascending", "type": "quantitative"}, "tooltip": [{"field": "REF_DATE", "title": "Year", "type": "nominal"}, {"field": "VALUE", "title": "Value", "type": "quantitative"}], "x": {"axis": {"labelAngle": 0}, "field": "REF_DATE", "title": "Year", "type": "nominal"}, "y": {"field": "VALUE", "scale": {"domain": [0, 100]}, "stack": true, "title": "Proportion of Canadians in BMI category (%)", "type": "quantitative"}}, "height": 350, "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-5c0e9eebbc3d679b8afad31afecc248b": [{"REF_DATE": "1994", "BMI_clean": "Underweight", "VALUE": 2.7, "custom_order": 0}, {"REF_DATE": "1994", "BMI_clean": "Normal", "VALUE": 48.5, "custom_order": 1}, {"REF_DATE": "1994", "BMI_clean": "Overweight", "VALUE": 34.7, "custom_order": 2}, {"REF_DATE": "1994", "BMI_clean": "Obese", "VALUE": 12.7, "custom_order": 3}, {"REF_DATE": "1994", "BMI_clean": "Missing", "VALUE": 1.3, "custom_order": 4}, {"REF_DATE": "1996", "BMI_clean": "Underweight", "VALUE": 2.3, "custom_order": 0}, {"REF_DATE": "1996", "BMI_clean": "Normal", "VALUE": 48.3, "custom_order": 1}, {"REF_DATE": "1996", "BMI_clean": "Overweight", "VALUE": 34.3, "custom_order": 2}, {"REF_DATE": "1996", "BMI_clean": "Obese", "VALUE": 11.9, "custom_order": 3}, {"REF_DATE": "1996", "BMI_clean": "Missing", "VALUE": 3.1, "custom_order": 4}, {"REF_DATE": "1998", "BMI_clean": "Underweight", "VALUE": 2.3, "custom_order": 0}, {"REF_DATE": "1998", "BMI_clean": "Normal", "VALUE": 47.1, "custom_order": 1}, {"REF_DATE": "1998", "BMI_clean": "Overweight", "VALUE": 35.1, "custom_order": 2}, {"REF_DATE": "1998", "BMI_clean": "Obese", "VALUE": 14.1, "custom_order": 3}, {"REF_DATE": "1998", "BMI_clean": "Missing", "VALUE": 1.4, "custom_order": 4}, {"REF_DATE": "2000", "BMI_clean": "Underweight", "VALUE": 2.9, "custom_order": 0}, {"REF_DATE": "2000", "BMI_clean": "Normal", "VALUE": 48.4, "custom_order": 1}, {"REF_DATE": "2000", "BMI_clean": "Overweight", "VALUE": 32.4, "custom_order": 2}, {"REF_DATE": "2000", "BMI_clean": "Obese", "VALUE": 14.5, "custom_order": 3}, {"REF_DATE": "2000", "BMI_clean": "Missing", "VALUE": 1.8, "custom_order": 4}, {"REF_DATE": "2003", "BMI_clean": "Underweight", "VALUE": 2.6, "custom_order": 0}, {"REF_DATE": "2003", "BMI_clean": "Normal", "VALUE": 46.7, "custom_order": 1}, {"REF_DATE": "2003", "BMI_clean": "Overweight", "VALUE": 33.3, "custom_order": 2}, {"REF_DATE": "2003", "BMI_clean": "Obese", "VALUE": 14.9, "custom_order": 3}, {"REF_DATE": "2003", "BMI_clean": "Missing", "VALUE": 2.5, "custom_order": 4}, {"REF_DATE": "2005", "BMI_clean": "Underweight", "VALUE": 2.7, "custom_order": 0}, {"REF_DATE": "2005", "BMI_clean": "Normal", "VALUE": 46.2, "custom_order": 1}, {"REF_DATE": "2005", "BMI_clean": "Overweight", "VALUE": 33.4, "custom_order": 2}, {"REF_DATE": "2005", "BMI_clean": "Obese", "VALUE": 15.5, "custom_order": 3}, {"REF_DATE": "2005", "BMI_clean": "Missing", "VALUE": 2.2, "custom_order": 4}, {"REF_DATE": "2007", "BMI_clean": "Underweight", "VALUE": 2.6, "custom_order": 0}, {"REF_DATE": "2007", "BMI_clean": "Normal", "VALUE": 44.4, "custom_order": 1}, {"REF_DATE": "2007", "BMI_clean": "Overweight", "VALUE": 32.4, "custom_order": 2}, {"REF_DATE": "2007", "BMI_clean": "Obese", "VALUE": 16.0, "custom_order": 3}, {"REF_DATE": "2007", "BMI_clean": "Missing", "VALUE": 4.6, "custom_order": 4}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
